@@ -1,0 +1,68 @@
+{
+  "_comment": "Posisi & ukuran dalam piksel pada ukuran desain 1280x720. Ubah angka di sini saat desain tombol sudah ada; kode tidak perlu diubah.",
+  "designSize": {
+    "width": 1280,
+    "height": 720
+  },
+  "joystick": {
+    "x": 170,
+    "y": 560,
+    "baseRadius": 90,
+    "knobRadius": 40,
+    "deadZone": 0.15
+  },
+  "buttons": {
+    "attack": {
+      "x": 1140,
+      "y": 580,
+      "radius": 70
+    },
+    "skill1": {
+      "x": 990,
+      "y": 580,
+      "radius": 50
+    },
+    "skill2": {
+      "x": 1010,
+      "y": 505,
+      "radius": 50
+    },
+    "skill3": {
+      "x": 1065,
+      "y": 450,
+      "radius": 50
+    },
+    "skill4": {
+      "x": 1140,
+      "y": 430,
+      "radius": 50
+    }
+  },
+  "edgeButtons": {
+    "_comment": "Blink, poison, recall. Belum dipakai di prototipe (enabled: false).",
+    "enabled": false,
+    "blink": {
+      "x": 1235,
+      "y": 330,
+      "radius": 34
+    },
+    "poison": {
+      "x": 1235,
+      "y": 250,
+      "radius": 34
+    },
+    "recall": {
+      "x": 1235,
+      "y": 170,
+      "radius": 34
+    }
+  },
+  "hud": {
+    "hpBar": {
+      "x": 40,
+      "y": 30,
+      "width": 260,
+      "height": 18
+    }
+  }
+}
