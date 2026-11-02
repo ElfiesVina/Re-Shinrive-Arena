@@ -1,6 +1,17 @@
 /**
- * FUNGSI  : Atur skala layar dan orientasi, lalu lanjut ke PreloadScene
+ * FUNGSI  : Scene awal, langsung ke Preload
  * DIPAKAI : main.js
- * MEMAKAI : config/game.config
- * STATUS  : kerangka, belum diisi
+ * MEMAKAI : -
+ * STATUS  : aktif
  */
+import Phaser from 'phaser';
+
+export class BootScene extends Phaser.Scene {
+  constructor() {
+    super('Boot');
+  }
+
+  create() {
+    this.scene.start('Preload');
+  }
+}

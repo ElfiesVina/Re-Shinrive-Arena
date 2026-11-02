@@ -1,26 +1,56 @@
 # Prototipe Arena - Re:Shinrive Arena
-Prototipe OFFLINE (Fase 1 roadmap): hanya tampilan arena + joystick + tombol attack + skill 1-4.
-Tanpa server, tanpa login, tanpa menu. Stack: Phaser 3 + Vite.
 
-## Menjalankan (setelah kode diisi)
-    npm install
-    npm run dev      # buka di browser, mode landscape (atau DevTools > mode HP)
+Prototipe OFFLINE (Fase 1): arena + Asuka (sprite) + joystick + tombol attack + skill 1-4.
 
-## Cara memasang desain
-1. Kirim desain -> potong sesuai nama file di `public/assets/assets.manifest.json`.
-2. Taruh file di `public/assets/ui/` dan `public/assets/backgrounds/`.
-3. Atur posisi/ukuran tombol di `src/config/layout.json` (tanpa ubah kode).
+**Stack:** Phaser 3 + Vite
 
-## Peta folder
-    src/main.js            titik masuk Phaser
-    src/config/            ukuran layar, layout tombol, angka sementara
-    src/scenes/            Boot -> Preload -> Arena
-    src/arena/             peta, kamera, tanah
-    src/hero/              hero placeholder (kotak) sampai sprite siap
-    src/input/             joystick, tombol attack/skill, keyboard (tes PC)
-    src/hud/               HUD digambar di canvas
-    src/skills/            cooldown + data skill placeholder
-    public/assets/         gambar desain (ui, backgrounds, heroes)
+## Cara menjalankan
 
-Nama folder dan gaya header file mengikuti proyek utama supaya nanti mudah digabung
-ke `client/src/battle/`.
+```bash
+cd prototype
+npm install
+npm run dev
+```
+
+Buka di browser. **Mode landscape** (atau DevTools → Device mode → landscape HP).
+
+### Kontrol
+
+| Input | Aksi |
+|-------|------|
+| Joystick kiri / A D | Gerak kiri-kanan |
+| Joystick atas / W / Space | Lompat |
+| Tombol ATK / J atau K | Basic Attack |
+| S1–S4 | Skill (cooldown only) |
+
+## Status saat ini
+
+- Hero: **Asuka** (sprite sheet sudah dipotong & di-chroma key)
+- Animasi: idle, walk, run, jump, attack
+- Joystick multitouch + keyboard debug
+- Tombol attack + 4 skill dengan cooldown visual
+- Background placeholder (ganti dengan desain kamu nanti)
+- UI tombol digambar kode (ganti dengan asset PNG kamu nanti lewat `layout.json` + `assets.manifest.json`)
+
+## Ganti background / UI sendiri
+
+1. Taruh file di `public/assets/backgrounds/` dan `public/assets/ui/`
+2. Sesuaikan nama di `public/assets/assets.manifest.json`
+3. Atur posisi di `src/config/layout.json`
+
+## Struktur
+
+```
+src/
+  main.js
+  config/          constants + layout
+  scenes/          Boot → Preload → Arena
+  hero/            Asuka
+  input/           Joystick, ActionButtons, Keyboard
+  arena/           Map + Camera
+  hud/             HP + nama
+public/assets/heroes/asuka/
+  idle/ walk/ run/ jump/ attack/
+```
+
+Nama folder mengikuti proyek utama agar mudah digabung ke `client/src/battle/`.

@@ -6,14 +6,16 @@
     "groundY": 600
   },
   "hero": {
-    "speed": 260,
+    "speed": 280,
+    "runSpeed": 420,
     "maxHp": 1000,
-    "jumpPower": 520,
-    "gravity": 1400
+    "jumpPower": 620,
+    "gravity": 1400,
+    "scale": 0.55
   },
   "skills": {
     "attack": {
-      "cooldownMs": 600
+      "cooldownMs": 450
     },
     "skill1": {
       "cooldownMs": 3000

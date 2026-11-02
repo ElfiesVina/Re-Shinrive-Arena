@@ -1,6 +1,7 @@
 /**
- * FUNGSI  : Bar HP sederhana
- * DIPAKAI : BattleHUD
- * MEMAKAI : config/layout.json
- * STATUS  : kerangka, belum diisi
+ * FUNGSI  : HealthBar helper (dipakai BattleHUD)
+ * STATUS  : placeholder aktif
  */
+export class HealthBar {
+  // implemented inside BattleHUD for simplicity
+}
