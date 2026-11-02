@@ -1,0 +1,31 @@
+{
+  "_comment": "Angka sementara untuk prototipe. Nanti diganti dari shared/constants.",
+  "arena": {
+    "width": 4800,
+    "height": 720,
+    "groundY": 600
+  },
+  "hero": {
+    "speed": 260,
+    "maxHp": 1000,
+    "jumpPower": 520,
+    "gravity": 1400
+  },
+  "skills": {
+    "attack": {
+      "cooldownMs": 600
+    },
+    "skill1": {
+      "cooldownMs": 3000
+    },
+    "skill2": {
+      "cooldownMs": 5000
+    },
+    "skill3": {
+      "cooldownMs": 8000
+    },
+    "skill4": {
+      "cooldownMs": 20000
+    }
+  }
+}
