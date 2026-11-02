@@ -1,0 +1,11 @@
+{
+  "appId": "com.reshinrive.arena",
+  "appName": "Re:Shinrive Arena",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
