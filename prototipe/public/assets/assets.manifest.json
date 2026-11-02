@@ -1,68 +1,28 @@
 {
-  "_comment": "Daftar nama file yang diharapkan. Potong desain sesuai nama ini. Format PNG/WebP RGBA. 'size' = ukuran yang disarankan pada layar 1280x720.",
+  "_comment": "Daftar asset. Sprite Asuka sudah dipotong per frame di heroes/asuka/{idle,walk,run,jump,attack}/",
   "ui": [
     {
       "key": "joystick_base",
       "file": "ui/joystick_base.png",
-      "size": "180x180"
+      "size": "180x180",
+      "optional": true
     },
     {
       "key": "joystick_knob",
       "file": "ui/joystick_knob.png",
-      "size": "80x80"
+      "size": "80x80",
+      "optional": true
     },
     {
       "key": "btn_attack",
       "file": "ui/btn_attack.png",
-      "size": "140x140"
-    },
-    {
-      "key": "btn_attack_pressed",
-      "file": "ui/btn_attack_pressed.png",
       "size": "140x140",
       "optional": true
     },
     {
       "key": "btn_skill_bg",
       "file": "ui/btn_skill_bg.png",
-      "size": "100x100"
-    },
-    {
-      "key": "btn_skill_bg_pressed",
-      "file": "ui/btn_skill_bg_pressed.png",
       "size": "100x100",
-      "optional": true
-    },
-    {
-      "key": "icon_skill1",
-      "file": "ui/icon_skill1.png",
-      "size": "80x80"
-    },
-    {
-      "key": "icon_skill2",
-      "file": "ui/icon_skill2.png",
-      "size": "80x80"
-    },
-    {
-      "key": "icon_skill3",
-      "file": "ui/icon_skill3.png",
-      "size": "80x80"
-    },
-    {
-      "key": "icon_skill4",
-      "file": "ui/icon_skill4.png",
-      "size": "80x80"
-    },
-    {
-      "key": "hp_bar_bg",
-      "file": "ui/hp_bar_bg.png",
-      "size": "260x18",
-      "optional": true
-    },
-    {
-      "key": "hp_bar_fill",
-      "file": "ui/hp_bar_fill.png",
-      "size": "260x18",
       "optional": true
     }
   ],
@@ -70,27 +30,24 @@
     {
       "key": "bg_far",
       "file": "backgrounds/bg_far.png",
-      "size": "bebas, tinggi 720, bisa diulang horizontal"
-    },
-    {
-      "key": "bg_mid",
-      "file": "backgrounds/bg_mid.png",
-      "size": "bebas, tinggi 720, bisa diulang horizontal",
+      "size": "tinggi 720, bisa diulang",
       "optional": true
     },
     {
       "key": "ground",
       "file": "backgrounds/ground.png",
-      "size": "tinggi sekitar 120, bisa diulang horizontal"
-    }
-  ],
-  "heroes": [
-    {
-      "key": "asuka-idle",
-      "file": "heroes/asuka/idle.png",
-      "size": "satu frame dulu, tampak samping hadap kanan",
+      "size": "tinggi ~120",
       "optional": true
     }
   ],
-  "_catatan": "Overlay cooldown digambar oleh kode (lingkaran gelap + angka), tidak perlu gambar. Tombol skill memakai btn_skill_bg yang sama untuk keempatnya + icon_skillN di atasnya."
+  "heroes": {
+    "asuka": {
+      "idle": "heroes/asuka/idle/f00.png ... f03.png",
+      "walk": "heroes/asuka/walk/f00.png ... f09.png",
+      "run": "heroes/asuka/run/f00.png ... f07.png",
+      "jump": "heroes/asuka/jump/f00.png ... f07.png",
+      "attack": "heroes/asuka/attack/f00.png ... f15.png"
+    }
+  },
+  "_catatan": "UI dan background masih digambar kode (placeholder). Ganti dengan desain sendiri kapan saja. Tombol cooldown digambar kode."
 }

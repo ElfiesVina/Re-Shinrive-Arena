@@ -1,6 +1,5 @@
 /**
- * FUNGSI  : Tombol tepi (blink, poison, recall); nonaktif di prototipe
- * DIPAKAI : InputRouter
- * MEMAKAI : config/layout.json
- * STATUS  : kerangka, belum diisi
+ * FUNGSI  : Blink / Poison / Recall (belum aktif di prototipe)
+ * STATUS  : kerangka
  */
+export class EdgeButtons {}
