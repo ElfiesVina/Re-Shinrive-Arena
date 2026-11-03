@@ -1,8 +1,7 @@
 /**
  * FUNGSI  : Hero Asuka: gerak, lompat, animasi, attack
  * DIPAKAI : ArenaScene
- * MEMAKAI : config/constants.json
- * STATUS  : aktif
+ * STATUS  : aktif (fix jatuh tembus tanah)
  */
 import Phaser from 'phaser';
 import constants from '../config/constants.json';
@@ -14,11 +13,15 @@ export class Hero {
 
     this.sprite = scene.physics.add.sprite(x, y, 'asuka_idle_0');
     this.sprite.setScale(this.const.scale);
-    this.sprite.setCollideWorldBounds(false);
-    // Approximate body relative to 300x400 texture
-    this.sprite.body.setSize(100, 280);
-    this.sprite.body.setOffset(100, 90);
+    this.sprite.setOrigin(0.5, 1); // kaki di titik origin
+    this.sprite.setCollideWorldBounds(true);
     this.sprite.setDepth(10);
+
+    // Hitbox lebih kecil, di bagian bawah sprite
+    const bw = 80;
+    const bh = 200;
+    this.sprite.body.setSize(bw, bh);
+    this.sprite.body.setOffset((300 - bw) / 2, 400 - bh - 10);
 
     this.facing = 1;
     this.onGround = false;
@@ -42,7 +45,6 @@ export class Hero {
     const body = this.sprite.body;
     this.onGround = body.blocked.down || body.touching.down;
 
-    // Attack
     if (attackPressed && !this.isAttacking && this.onGround) {
       this.isAttacking = true;
       this.playAnim('asuka_attack');
@@ -55,7 +57,6 @@ export class Hero {
       return;
     }
 
-    // Horizontal
     const absX = Math.abs(moveX);
     if (absX > 0.15) {
       const speed = absX > 0.65 ? this.const.runSpeed : this.const.speed;
@@ -66,13 +67,11 @@ export class Hero {
       body.setVelocityX(0);
     }
 
-    // Jump
     if (jumpPressed && this.onGround) {
       body.setVelocityY(-this.const.jumpPower);
       this.playAnim('asuka_jump');
     }
 
-    // Animation state machine
     if (!this.onGround) {
       if (this.currentAnim !== 'asuka_jump') this.playAnim('asuka_jump');
     } else if (absX > 0.65) {
@@ -97,4 +96,4 @@ export class Hero {
   getMaxHp() {
     return this.const.maxHp;
   }
-}
+         }
