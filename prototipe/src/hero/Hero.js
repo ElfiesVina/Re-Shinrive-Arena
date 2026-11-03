@@ -14,6 +14,9 @@ export class Hero {
 
     this.sprite = scene.physics.add.sprite(x, y, 'asuka_idle_0');
     this.sprite.setScale(this.const.scale);
+    this.sprite.setTint(0xffffff);
+    this.sprite.setAlpha(1);
+    this.sprite.setBlendMode(Phaser.BlendModes.NORMAL);
     this.sprite.setCollideWorldBounds(false);
     // Approximate body relative to 300x400 texture
     this.sprite.body.setSize(100, 280);
