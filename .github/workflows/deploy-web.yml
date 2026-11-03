@@ -1,17 +1,16 @@
 name: Deploy Web (auto update)
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
       - 'prototipe/**'
+      - '.github/workflows/deploy-web.yml'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: prototipe
     permissions:
       contents: read
       pages: write
@@ -21,13 +20,22 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: Install & build
+        working-directory: prototipe
+        run: |
+          npm install
+          npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: prototipe/dist
-      - id: deployment
+
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
