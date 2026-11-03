@@ -1,10 +1,12 @@
 /**
  * FUNGSI  : Load asset + buat animasi Asuka
  * DIPAKAI : BootScene
- * MEMAKAI : assets/heroes/asuka/*
+ * MEMAKAI : assets/heroes/asuka/*, assets/backgrounds/arena_*.webp
  * STATUS  : aktif
  */
 import Phaser from 'phaser';
+import constants from '../config/constants.json';
+import { makeShadowTexture, makeSlashTexture } from '../utils/placeholder.js';
 
 export class PreloadScene extends Phaser.Scene {
   constructor() {
@@ -30,17 +32,21 @@ export class PreloadScene extends Phaser.Scene {
 
     // Load frames
     const anims = {
-      idle: 4,
+      idle: 8,
       walk: 10,
       run: 8,
       jump: 8,
-      attack: 16,
     };
+
+    // Latar arena (panorama menyambung)
+    for (let i = 0; i < constants.arena.tileCount; i++) {
+      this.load.image(`arena_${i}`, `assets/backgrounds/arena_${i}.webp`);
+    }
 
     for (const [name, count] of Object.entries(anims)) {
       for (let i = 0; i < count; i++) {
         const key = `asuka_${name}_${i}`;
-        const path = `assets/heroes/asuka/${name}/f${String(i).padStart(2, '0')}.png`;
+        const path = `assets/heroes/asuka/${name}/f${String(i).padStart(2, '0')}.webp`;
         this.load.image(key, path);
       }
     }
@@ -48,11 +54,14 @@ export class PreloadScene extends Phaser.Scene {
 
   create() {
     // Create animations
-    this._makeAnim('asuka_idle', 'idle', 4, 6, -1);
-    this._makeAnim('asuka_walk', 'walk', 10, 12, -1);
-    this._makeAnim('asuka_run', 'run', 8, 14, -1);
-    this._makeAnim('asuka_jump', 'jump', 8, 10, 0);
-    this._makeAnim('asuka_attack', 'attack', 16, 18, 0);
+    const a = constants.hero.anim;
+    this._makeAnim('asuka_idle', 'idle', 8, a.idleFps, -1);
+    this._makeAnim('asuka_walk', 'walk', 10, a.walkFps, -1);
+    this._makeAnim('asuka_run', 'run', 8, a.runFps, -1);
+
+    // Tekstur kecil buatan kode
+    makeShadowTexture(this);
+    makeSlashTexture(this);
 
     this.scene.start('Arena');
   }

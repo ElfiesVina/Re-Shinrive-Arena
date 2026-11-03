@@ -1,0 +1,13 @@
+{
+  "appId": "com.reshinrive.arena",
+  "appName": "Re:Shinrive Arena",
+  "webDir": "dist",
+  "server": {
+    "url": "https://elfiesvina.github.io/Re-Shinrive-Arena/",
+    "cleartext": true,
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
