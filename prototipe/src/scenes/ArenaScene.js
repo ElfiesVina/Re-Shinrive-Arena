@@ -42,8 +42,8 @@ export class ArenaScene extends Phaser.Scene {
     this.physics.add.existing(g, true);
     this.ground.add(g);
 
-    // Hero berdiri di atas tanah
-    this.hero = new Hero(this, 400, groundY);
+    // Hero berdiri di atas tanah, mulai di depan base biru
+    this.hero = new Hero(this, constants.arena.spawn.blue, groundY);
     this.physics.add.collider(this.hero.sprite, this.ground);
     
     // Camera

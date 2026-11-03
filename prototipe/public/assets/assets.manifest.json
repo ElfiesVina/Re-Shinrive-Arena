@@ -1,5 +1,5 @@
 {
-  "_comment": "Daftar asset. Sprite Asuka sudah dipotong per frame di heroes/asuka/{idle,walk,run,jump,attack}/",
+  "_comment": "Daftar asset aktif. Arena = panorama 4064x720 (3 potongan). Hero = frame webp 256x240 yang sudah dinormalkan (titik pijak kaki tetap di 128,233).",
   "ui": [
     {
       "key": "joystick_base",
@@ -28,26 +28,28 @@
   ],
   "backgrounds": [
     {
-      "key": "bg_far",
-      "file": "backgrounds/bg_far.png",
-      "size": "tinggi 720, bisa diulang",
-      "optional": true
+      "key": "arena_0",
+      "file": "backgrounds/arena_0.webp",
+      "size": "1356x720 (+2px overlap)"
     },
     {
-      "key": "ground",
-      "file": "backgrounds/ground.png",
-      "size": "tinggi ~120",
-      "optional": true
+      "key": "arena_1",
+      "file": "backgrounds/arena_1.webp",
+      "size": "1356x720 (+2px overlap)"
+    },
+    {
+      "key": "arena_2",
+      "file": "backgrounds/arena_2.webp",
+      "size": "1356x720 (+2px overlap)"
     }
   ],
   "heroes": {
     "asuka": {
-      "idle": "heroes/asuka/idle/f00.png ... f03.png",
-      "walk": "heroes/asuka/walk/f00.png ... f09.png",
-      "run": "heroes/asuka/run/f00.png ... f07.png",
-      "jump": "heroes/asuka/jump/f00.png ... f07.png",
-      "attack": "heroes/asuka/attack/f00.png ... f15.png"
+      "idle": "heroes/asuka/idle/f00..f07.webp",
+      "walk": "heroes/asuka/walk/f00..f09.webp",
+      "run": "heroes/asuka/run/f00..f07.webp",
+      "jump": "heroes/asuka/jump/f00..f07.webp (0 jongkok, 1-2 naik, 3 puncak, 4-5 turun, 6 mendarat, 7 berdiri)"
     }
   },
-  "_catatan": "UI dan background masih digambar kode (placeholder). Ganti dengan desain sendiri kapan saja. Tombol cooldown digambar kode."
+  "_catatan": "Belum ada frame attack dan blink yang bersih. Attack sementara = tebasan buatan kode (src/utils/placeholder.js)."
 }

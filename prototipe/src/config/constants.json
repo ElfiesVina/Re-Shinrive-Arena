@@ -1,17 +1,52 @@
 {
-  "_comment": "Angka sementara untuk prototipe. Nanti diganti dari shared/constants.",
+  "_comment": "Angka sementara untuk prototipe. Nanti diganti dari shared/constants. Semua ukuran dalam piksel desain 1280x720.",
   "arena": {
-    "width": 4800,
+    "width": 4064,
     "height": 720,
-    "groundY": 600
+    "groundY": 538,
+    "tileWidth": 1356,
+    "tileCount": 3,
+    "_catatanArena": "Panorama arena 4064x720 dipotong 3 potongan (arena_0..2.webp) yang menyambung tanpa jahitan. Simetris: base biru di kiri, base merah di kanan, castle + plat di tengah.",
+    "bases": {
+      "blue": { "x": 172 },
+      "red": { "x": 3892 },
+      "center": { "x": 2032 }
+    },
+    "spawn": { "blue": 330, "red": 3734 },
+    "edgePadding": 40
   },
   "hero": {
-    "speed": 280,
-    "runSpeed": 420,
+    "speed": 200,
+    "runSpeed": 330,
     "maxHp": 1000,
     "jumpPower": 620,
     "gravity": 1400,
-    "scale": 0.55
+    "standHeight": 150,
+    "tint": 15724543,
+    "texture": {
+      "width": 256,
+      "height": 240,
+      "anchorX": 128,
+      "anchorY": 233,
+      "standHeight": 200
+    },
+    "body": {
+      "width": 60,
+      "height": 186
+    },
+    "anim": {
+      "idleFps": 8,
+      "walkFps": 15,
+      "walkRefSpeed": 200,
+      "runFps": 11,
+      "runRefSpeed": 330
+    },
+    "attackMs": 300,
+    "shadow": {
+      "width": 120,
+      "height": 26,
+      "alpha": 0.5
+    }
   },
   "skills": {
     "attack": {
