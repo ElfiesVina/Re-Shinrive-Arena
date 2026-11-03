@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -36,18 +36,32 @@ jobs:
       - name: Build web (Vite)
         run: npm run build
 
-      - name: Add Capacitor Android platform
+      - name: Setup Capacitor Android
         run: |
-          npx cap add android || true
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
           npx cap sync android
 
       - name: Build debug APK
         working-directory: prototipe/android
-        run: chmod +x gradlew && ./gradlew assembleDebug --no-daemon
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+          echo "=== APK files ==="
+          find . -name "*.apk"
+          ls -la app/build/outputs/apk/debug/
+
+      - name: Rename APK
+        working-directory: prototipe/android
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/reshia_prototipe.apk
+          ls -la app/build/outputs/apk/debug/
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: re-shinrive-arena-debug
           path: prototipe/android/app/build/outputs/apk/debug/reshia_prototipe.apk
+          if-no-files-found: error
           retention-days: 14
