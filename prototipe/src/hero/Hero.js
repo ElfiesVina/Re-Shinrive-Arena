@@ -1,7 +1,7 @@
 /**
  * FUNGSI  : Hero Asuka: gerak, lompat, animasi, attack
  * DIPAKAI : ArenaScene
- * STATUS  : aktif (fix jatuh tembus tanah)
+ * STATUS  : aktif
  */
 import Phaser from 'phaser';
 import constants from '../config/constants.json';
@@ -13,11 +13,13 @@ export class Hero {
 
     this.sprite = scene.physics.add.sprite(x, y, 'asuka_idle_0');
     this.sprite.setScale(this.const.scale);
-    this.sprite.setOrigin(0.5, 1); // kaki di titik origin
+    this.sprite.setOrigin(0.5, 1);
+    this.sprite.setTint(0xffffff);
+    this.sprite.setAlpha(1);
+    this.sprite.setBlendMode(Phaser.BlendModes.NORMAL);
     this.sprite.setCollideWorldBounds(true);
     this.sprite.setDepth(10);
 
-    // Hitbox lebih kecil, di bagian bawah sprite
     const bw = 80;
     const bh = 200;
     this.sprite.body.setSize(bw, bh);
@@ -96,4 +98,4 @@ export class Hero {
   getMaxHp() {
     return this.const.maxHp;
   }
-         }
+  }
