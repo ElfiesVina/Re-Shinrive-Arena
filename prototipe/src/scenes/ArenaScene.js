@@ -28,17 +28,24 @@ export class ArenaScene extends Phaser.Scene {
     this.arenaMap = new ArenaMap(this);
     this.arenaMap.create();
 
-    // Ground collider
+    // Ground collider (tepat di groundY)
     this.ground = this.physics.add.staticGroup();
     const groundY = constants.arena.groundY;
-    const g = this.add.rectangle(constants.arena.width / 2, groundY + 40, constants.arena.width, 80, 0x000000, 0);
+    const g = this.add.rectangle(
+      constants.arena.width / 2,
+      groundY + 20,
+      constants.arena.width,
+      40,
+      0x000000,
+      0
+    );
     this.physics.add.existing(g, true);
     this.ground.add(g);
 
-    // Hero
-    this.hero = new Hero(this, 400, groundY - 10);
+    // Hero berdiri di atas tanah
+    this.hero = new Hero(this, 400, groundY);
     this.physics.add.collider(this.hero.sprite, this.ground);
-
+    
     // Camera
     this.cameraCtrl = new CameraController(this, this.hero.sprite);
 
